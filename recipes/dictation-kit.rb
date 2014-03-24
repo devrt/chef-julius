@@ -17,9 +17,9 @@
 # limitations under the License.
 #
 
-julius_dictation_kit_path = "#{Chef::Config['file_cache_path']}/julius-dictation-kit-v#{node["julius"]["dictation-kit-version"]}-linux.tgz"
+julius_dictation_kit_path = "#{Chef::Config['file_cache_path']}/julius-dictation-kit-v#{node['julius']['dictation-kit-version']}-linux.tgz"
 
-bash "unpack_julius_dictation_kit" do
+bash 'unpack_julius_dictation_kit' do
   code <<-EOH
       mkdir -p /opt/julius
       cd /opt/julius
@@ -29,7 +29,7 @@ bash "unpack_julius_dictation_kit" do
 end
 
 remote_file julius_dictation_kit_path do
-  source "http://sourceforge.jp/frs/redir.php?f=%2Fjulius%2F60416%2Fdictation-kit-v#{node["julius"]["dictation-kit-version"]}-linux.tgz"
+  source "http://sourceforge.jp/frs/redir.php?f=%2Fjulius%2F60416%2Fdictation-kit-v#{node['julius']['dictation-kit-version']}-linux.tgz"
   action :create_if_missing
-  notifies :run, "bash[unpack_julius_dictation_kit]", :immediately
+  notifies :run, 'bash[unpack_julius_dictation_kit]', :immediately
 end

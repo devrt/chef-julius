@@ -1,1 +1,1 @@
-default["julius"]["dictation-kit-version"] = "4.3.1"
+default['julius']['dictation-kit-version'] = '4.3.1'

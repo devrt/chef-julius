@@ -17,18 +17,18 @@
 # limitations under the License.
 #
 
-include_recipe "apt"
-include_recipe "build-essential"
-include_recipe "cvs"
+include_recipe 'apt'
+include_recipe 'build-essential'
+include_recipe 'cvs'
 
 cvs "#{Chef::Config['file_cache_path']}/julius" do
   cvsroot ':pserver:anonymous@cvs.sourceforge.jp:/cvsroot/julius'
-  repository "julius4"
+  repository 'julius4'
   action :sync
-  notifies :run, "bash[compile_julius]", :immediately
+  notifies :run, 'bash[compile_julius]', :immediately
 end
 
-bash "compile_julius" do
+bash 'compile_julius' do
   cwd "#{Chef::Config['file_cache_path']}/julius"
   code <<-EOH
       ./configure

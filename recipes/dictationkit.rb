@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: julius
-# Recipe:: dictation-kit
+# Recipe:: dictationkit
 #
 # Copyright 2014, Yosuke Matsusaka
 #
@@ -17,19 +17,19 @@
 # limitations under the License.
 #
 
-julius_dictation_kit_path = "#{Chef::Config['file_cache_path']}/julius-dictation-kit-v#{node['julius']['dictation-kit-version']}-linux.tgz"
+julius_dictationkit_path = "#{Chef::Config['file_cache_path']}/julius-dictation-kit-v#{node['julius']['dictationkit-version']}-linux.tgz"
 
-bash 'unpack_julius_dictation_kit' do
+bash 'unpack_julius_dictationkit' do
   code <<-EOH
       mkdir -p /opt/julius
       cd /opt/julius
-      tar xvfz #{julius_dictation_kit_path}
+      tar xvfz #{julius_dictationkit_path}
   EOH
   action :nothing
 end
 
-remote_file julius_dictation_kit_path do
-  source "http://sourceforge.jp/frs/redir.php?f=%2Fjulius%2F60416%2Fdictation-kit-v#{node['julius']['dictation-kit-version']}-linux.tgz"
+remote_file julius_dictationkit_path do
+  source "http://sourceforge.jp/frs/redir.php?f=%2Fjulius%2F60416%2Fdictation-kit-v#{node['julius']['dictationkit-version']}-linux.tgz"
   action :create_if_missing
-  notifies :run, 'bash[unpack_julius_dictation_kit]', :immediately
+  notifies :run, 'bash[unpack_julius_dictationkit]', :immediately
 end

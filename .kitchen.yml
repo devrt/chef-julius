@@ -14,5 +14,5 @@ suites:
   - name: default
     run_list:
       - recipe[julius::default]
-      - recipe[julius::dictation-kit]
+      - recipe[julius::dictationkit]
     attributes:

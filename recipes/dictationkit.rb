@@ -24,6 +24,7 @@ bash 'unpack_julius_dictationkit' do
       mkdir -p /opt/julius
       cd /opt/julius
       tar xvfz #{julius_dictationkit_path}
+      ln -s dictation-kit-v#{node['julius']['dictationkit-version']}-linux dictationkit
   EOH
   action :nothing
 end
